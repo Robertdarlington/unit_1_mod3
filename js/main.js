@@ -203,22 +203,26 @@ $(document).ready(jQueryAjax);
 
 //start debug
 
+//creats a callback function so it can be done asynchronously and we dont have to wait for it
 function Callback(response){
-
+//sets the varible as mydata
 		var mydata;
+		//retrives the div and a inserts content after element with the append
 		$(mydiv).append('<br>GeoJSON data:<br>' );
 		//$("#mydiv").append('GeoJSON data: ' + JSON.stringify(status));
+		//inserts the stringify verison of the resonse after the div element
 		$(mydiv).append(JSON.stringify(response));
 		//+ JSON.stringify(mydata)
 		//'GeoJSON data: ' +
 };
-
+//preforms the ajax request task asynchronously
 function jQueryAjax(){
-
+//retrievs the data and deines the type of data
 	$.ajax("data/megacities.json", {
 		dataType: "json",
+		// runs the fucntion if the request suceeds 
 		success: function(response){
-
+//preforms the callback
 			Callback(response)
 		}
 	});
